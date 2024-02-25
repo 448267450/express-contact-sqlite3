@@ -49,24 +49,24 @@ exports.contacts_detail = async function (req, res, next) {
 
 /* GET contacts delete . */
 exports.contacts_delete_get = async function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
+    const contact = await contactsRepo.findById(req.params.uuid);
     res.render('contacts_delete', { title: 'Delete a Contact', contact: contact });
 };
 
 /* POST contacts delete . */
-exports.contacts_delete_post = function (req, res, next) {
+exports.contacts_delete_post = async function (req, res, next) {
     contactsRepo.deleteById(req.params.uuid);
     res.redirect('/contacts')
 };
 
 /* GET contacts edit  */
-exports.contacts_edit_get = function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
+exports.contacts_edit_get = async function (req, res, next) {
+    const contact = await contactsRepo.findById(req.params.uuid);
     res.render('contacts_edit', { title: 'Edit Contact', contact: contact })
 };
 
 /* POST contacts edit . */
-exports.contact_edit_post = function (req, res, next) {
+exports.contact_edit_post = async function (req, res, next) {
     // console.log(req.body);
     const result = validationResult(req);
     if (!result.isEmpty()) {

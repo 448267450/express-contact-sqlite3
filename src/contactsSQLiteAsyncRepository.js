@@ -77,6 +77,7 @@ const repo = {
     },
 
     update: (contact) => {
+        contact.lastModifiedTime = formattedDate;
         return new Promise((resolve, reject) => {
             db.run("UPDATE contacts SET firstName = ?, lastName = ?, emailAdd = ?, contactNotes = ?, lastModifiedTime = ? WHERE id = ?",
                 [contact.firstName, contact.lastName, contact.emailAdd, contact.contactNotes, contact.lastModifiedTime, contact.id],

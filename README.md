@@ -15,7 +15,7 @@
         OS: MacOS
         Node JS version: v21.2.0
         Editor Used: Visual Studio Code
-        Dependencies: better-sqlite3(9.4.1), bootstrap(5.3.2), express(4.18.2), express-validator(7.0.1)
+        Dependencies: better-sqlite3(9.4.1), sqlited3(5.1.7), bootstrap(5.3.2), express(4.18.2), express-validator(7.0.1)
       o Installation/Running Instructions: 
         Step 1: Create a folder in your local location of your computer
         Step 2: Open the folder with Terminal and input the command "git clone https://github.com/448267450/express-contact-sqlite3"
