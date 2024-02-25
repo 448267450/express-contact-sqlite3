@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title My Contact Database
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous") 
+  body.bg-dark
+    block content
+      .jumbotron.container
+         h1.display-6.text-light= title
+         hr.my-4.text-light
+         h2.text-light Intro of the Application:
+         p.text-warning Welcome to #{title}. This application stores all my contactor's information, including name, email address,
+         p.text-warning and contact notes. You can add, delete, modify and query contact informations within this application.
+         h2.text-light Author's Contact Information: 
+         p.text-info Name: Wenkun Ren
+         p.text-info Email: wren6@hawk.iit.edu
+         p.text-info Mobile: 3127539086
+         p.text-info Major: Software Development
+         hr.my-4.text-light
+         a.btn.btn-primary.btn-lg(href=`/contacts`) View Contact Database
+         script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js")
+

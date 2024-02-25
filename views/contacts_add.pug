@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title My Contact Database
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous") 
+  body.bg-dark
+    block content
+      .jumbotron.container
+        h1.display-6.text-light= title
+        p.text-info.font-weight-normal  Use the form below to add a contact 
+        hr.my-4.text-light
+        div.container-sm.col-5(style="margin-left: -16px;")
+          if msg 
+            each val in msg 
+              ul 
+                li(class='text-danger')= val.msg 
+          form(method='POST' action='/contacts/add')
+            label.col-form-label.text-warning.font-weight-bold(for="exampleInput") First Name: 
+            input.form-control.rounded.form-control-sm(type='text' name='firstName') 
+
+            label.col-form-label.text-warning.font-weight-bold(for="exampleInput") Last Name: 
+            input.form-control.rounded.form-control-sm(type='text' name='lastName')                
+
+            label.col-form-label.text-warning.font-weight-bold(for="exampleInput") Email Address: 
+            input.form-control.rounded.form-control-sm(type='text' name='emailAdd') 
+
+            label.col-form-label.text-warning.font-weight-bold(for="exampleInput") Contact Notes: 
+            textarea.form-control.rounded.form-control-sm(name="contactNotes" cols="30" rows="10")  
+            hr          
+            button.btn.btn-outline-success.btn-sm(type='submit') Create Contact 
+            a.btn.btn-outline-danger.btn-lg.btn-sm.mx-3(href='/contacts') Cancel 

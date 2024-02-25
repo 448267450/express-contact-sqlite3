@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title My Contact Database
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous") 
+  body.bg-dark
+     block content
+       .jumbotron.container
+         h1.display-6.text-light= title
+         p.text-success.font-weight-normal= "Name: " + contact.firstName + ' '+ contact.lastName
+         p.text-success.font-weight-normal= "Email Address: " + contact.emailAdd 
+         p.text-success.font-weight-normal= "Contact Notes: " + contact.contactNotes 
+         p.text-success.font-weight-normal= "Last Modified Time: " + contact.lastModefiedTime
+         div.contact-actions  
+           a.btn.btn-outline-warning.btn-sm(href=`/contacts/${contact.id}/edit`) Edit Contact 
+           a.btn.btn-outline-danger.btn-lg.btn-sm.mx-3(href=`/contacts/${contact.id}/delete`) Delete Contact
