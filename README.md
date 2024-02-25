@@ -3,9 +3,9 @@
 
 • wren6@hawk.iit.edu 
 
-• ITMD542 Full-stack Web Development Lab2 
+• ITMD542 Full-stack Web Development Lab3
 
-• https://github.com/448267450/express-contact
+• https://github.com/448267450/express-contact-sqlite3
 
 • The following sections
 
@@ -18,7 +18,7 @@
         Dependencies: better-sqlite3(9.4.1), bootstrap(5.3.2), express(4.18.2), express-validator(7.0.1)
       o Installation/Running Instructions: 
         Step 1: Create a folder in your local location of your computer
-        Step 2: Open the folder with Terminal and input the command "git clone https://github.com/448267450/express-contact.git"
+        Step 2: Open the folder with Terminal and input the command "git clone https://github.com/448267450/express-contact-sqlite3"
         Step 3: Open the express-contact folder which you cloned with Terminal
         Step 4: Input the command "npm install" to install relevant node modules to start the project
         Step 5: Input the commant "npm run dev" to start the project
