@@ -1,5 +1,4 @@
-// const contactsRepo = require('../src/contactsSQLiteRepository');
-const contactsRepo = require('../src/contactsFileRepository');
+const contactsRepo = require('../src/contactsSQLiteAsyncRepository');
 const { validationResult } = require('express-validator');
 const Contact = require('../src/Contact');
 
@@ -7,8 +6,9 @@ const Contact = require('../src/Contact');
 
 
 /* GET contacts listing. */
-exports.contacts_list = function (req, res, next) {
-    const data = contactsRepo.findAll();
+exports.contacts_list = async function (req, res, next) {
+    const data = await contactsRepo.findAll();
+    console.log(data);
     res.render('contacts', { title: 'Express Contacts', contacts: data });
 };
 
@@ -19,14 +19,14 @@ exports.contacts_create_get = function (req, res, next) {
 
 /* POST contacts add . */
 exports.contacts_create_post =
-    function (req, res, next) {
+    async function (req, res, next) {
         // console.log(req.body);
         const result = validationResult(req);
         if (!result.isEmpty()) {
             res.render('contacts_add', { title: 'Add a Contact', msg: result.array() });
         } else {
-            const newContact = new Contact('', req.body.firstName, req.body.lastName, req.body.emailAdd, 
-            req.body.contactNotes);
+            const newContact = new Contact('', req.body.firstName, req.body.lastName, req.body.emailAdd,
+                req.body.contactNotes);
             contactsRepo.create({
                 firstName: req.body.firstName.trim(), lastName: req.body.lastName.trim(),
                 emailAdd: req.body.emailAdd.trim(), contactNotes: req.body.contactNotes.trim(),
@@ -38,9 +38,9 @@ exports.contacts_create_post =
     };
 
 /* GET a contact */
-exports.contacts_detail = function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
-    if (contact) {
+exports.contacts_detail = async function (req, res, next) {
+    const contact = await contactsRepo.findById(req.params.uuid);
+    if (contact) { 
         res.render('contact', { title: 'Your Contact', contact: contact });
     } else {
         res.redirect('/contacts');
@@ -48,7 +48,7 @@ exports.contacts_detail = function (req, res, next) {
 };
 
 /* GET contacts delete . */
-exports.contacts_delete_get = function (req, res, next) {
+exports.contacts_delete_get = async function (req, res, next) {
     const contact = contactsRepo.findById(req.params.uuid);
     res.render('contacts_delete', { title: 'Delete a Contact', contact: contact });
 };
@@ -68,14 +68,14 @@ exports.contacts_edit_get = function (req, res, next) {
 /* POST contacts edit . */
 exports.contact_edit_post = function (req, res, next) {
     // console.log(req.body);
-    const result =  validationResult(req);
+    const result = validationResult(req);
     if (!result.isEmpty()) {
         const contact = contactsRepo.findById(req.params.uuid);
-        res.render('contacts_edit', { title: 'Edit a Contact', msg : result.array(), contact: contact });
+        res.render('contacts_edit', { title: 'Edit a Contact', msg: result.array(), contact: contact });
         // const contact = contactsRepo.findById(req.params.uuid);
         // res.render('contacts_add', { title: 'Edit Contact', msg: 'fistName cannot be blank!', contact: contact });
     } else {
-        const updateContact = new Contact(req.params.uuid, req.body.firstName, 
+        const updateContact = new Contact(req.params.uuid, req.body.firstName,
             req.body.lastName, req.body.emailAdd,
             req.body.contactNotes, req.body.lastModifiedTime);
         contactsRepo.update(updateContact);

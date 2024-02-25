@@ -1,4 +1,4 @@
-# Lab2 Contact List
+# Lab3 Contact List
 • Wenkun Ren
 
 • wren6@hawk.iit.edu 

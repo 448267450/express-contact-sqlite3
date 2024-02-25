@@ -12,7 +12,7 @@ html(lang="en")
          p.text-success.font-weight-normal= "Name: " + contact.firstName + ' '+ contact.lastName
          p.text-success.font-weight-normal= "Email Address: " + contact.emailAdd 
          p.text-success.font-weight-normal= "Contact Notes: " + contact.contactNotes 
-         p.text-success.font-weight-normal= "Last Modified Time: " + contact.lastModefiedTime
+         p.text-success.font-weight-normal= "Last Modified Time: " + contact.lastModifiedTime
          div.contact-actions  
            a.btn.btn-outline-warning.btn-sm(href=`/contacts/${contact.id}/edit`) Edit Contact 
            a.btn.btn-outline-danger.btn-lg.btn-sm.mx-3(href=`/contacts/${contact.id}/delete`) Delete Contact
